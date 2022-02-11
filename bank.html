@@ -22,34 +22,36 @@
           <div class="col-4">
             <div class="card bg-success py-3">
               <h3>Deposit</h3>
-              <h2>$<span>00</span></h2>
+              <h2>$<span id="deposit-pre-balance">00</span></h2>
             </div>
           </div>
           <div class="col-4">
             <div class="card bg-danger py-3">
               <h3>Withdraw</h3>
-              <h2>$<span>00</span></h2>
+              <h2>$<span id="withdraw-pre-balance">00</span></h2>
             </div>
           </div>
           <div class="col-4">
             <div class="card bg-primary py-3">
               <h3>Baleance</h3>
-              <h2>$<span>1240</span></h2>
+              <h2>$<span id="total-balance">1240</span></h2>
             </div>
           </div>
         </div>
+
+        <!-- ////button  -->
         <div class="row">
           <div class="col-6">
             <div class="py-3 rounded shadow-lg px-5">
               <h4 class="mb-2">Deposit</h4>
               <input
-                id="email"
+                id="deposit-input"
                 class="p-2 form-control"
                 type="email"
                 placeholder="$ amount you want to deposit"
               />
-              <button id="login" class="btn btn-outline-success mt-3">
-                Log In
+              <button id="deposit-btn" class="btn btn-outline-success mt-3">
+                Deposit
               </button>
             </div>
           </div>
@@ -57,13 +59,13 @@
             <div class="py-3 rounded shadow-lg px-5">
               <h4 class="mb-2">Withdraw</h4>
               <input
-                id="email"
+                id="withdraw-input"
                 class="p-2 form-control"
                 type="email"
                 placeholder="$ amount you want to withdraw"
               />
-              <button id="login" class="btn btn-outline-success mt-3">
-                Log In
+              <button id="withdraw-btn" class="btn btn-outline-success mt-3">
+                Withdraw
               </button>
             </div>
           </div>
