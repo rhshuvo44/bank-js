@@ -13,11 +13,15 @@ function preBlance(amount,totalBalance) {
     const currentBal = preBalance + amount;
     preBalanceTaxt.innerText=currentBal;
 };
-
+// curren balance 
+function currentBalance() {
+const balanceText =document.getElementById('total-balance');
+const balance =parseFloat(balanceText.innerText);
+return balance;
+}
 //balance
 function updateBalance(amount,isAdd) {
     const balanceText =document.getElementById('total-balance');
-    const balance =parseFloat(balanceText.innerText);
     if (isAdd==true) {
     const totalBalance = balance + amount;
     balanceText.innerText = totalBalance
@@ -30,15 +34,20 @@ function updateBalance(amount,isAdd) {
 
 document.getElementById('deposit-btn').addEventListener('click',function(){
     const depositAmount=getInput('deposit-input');
-    preBlance(depositAmount,'deposit-pre-balance');
     // update balance 
+    if (depositAmount >0) {
+    preBlance(depositAmount,'deposit-pre-balance');
     updateBalance(depositAmount,true);
+    }
 });
 
 //Withdraw
 document.getElementById('withdraw-btn').addEventListener('click',function(){;
 const withdrawAmount=getInput('withdraw-input');
-preBlance(withdrawAmount,'withdraw-pre-balance');
+const current =currentBalance();
 //update balance
-updateBalance(withdrawAmount ,false);
+if( withdrawAmount > 0 && withdrawAmount < current){
+    preBlance(withdrawAmount,'withdraw-pre-balance');
+    updateBalance(withdrawAmount ,false);
+}
 })
