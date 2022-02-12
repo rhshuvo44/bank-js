@@ -1,40 +1,44 @@
+// input flid
+function getInput(inputId) {
+    let InputValue = document.getElementById(inputId);
+    const inputAmount= parseFloat(InputValue.value);
+    // input clear 
+    InputValue.value ='';
+    return inputAmount;
+}
+////depogit and withdraw
+function preBlance(amount,totalBalance) {
+    let preBalanceTaxt = document.getElementById(totalBalance);
+    let preBalance =parseFloat(preBalanceTaxt.innerText);
+    const currentBal = preBalance + amount;
+    preBalanceTaxt.innerText=currentBal;
+};
 
-
+//balance
+function updateBalance(amount,isAdd) {
+    const balanceText =document.getElementById('total-balance');
+    const balance =parseFloat(balanceText.innerText);
+    if (isAdd==true) {
+    const totalBalance = balance + amount;
+    balanceText.innerText = totalBalance
+    }else{
+    const totalBalance = balance - amount;
+    balanceText.innerText = totalBalance
+    }
+}
 // bank depogit
 
 document.getElementById('deposit-btn').addEventListener('click',function(){
-    // input button 
-    const depositInput = document.getElementById('deposit-input');
-    const depositAmount= parseFloat(depositInput.value);
-    //taxt deposit
-    let depositPreBalanceTaxt = document.getElementById('deposit-pre-balance');
-    let depositPreBalance =parseFloat(depositPreBalanceTaxt.innerText);
-    let depositCurrentBal = depositPreBalance + depositAmount;
-    depositPreBalanceTaxt.innerText=depositCurrentBal;
+    const depositAmount=getInput('deposit-input');
+    preBlance(depositAmount,'deposit-pre-balance');
     // update balance 
-    const balanceText = document.getElementById('total-balance');
-    const balance=parseFloat(balanceText.innerText);
-    const totalBalance = balance + depositAmount;
-    balanceText.innerText=totalBalance;
-    // input clear 
-    depositInput.value ='';
+    updateBalance(depositAmount,true);
 });
 
 //Withdraw
-document.getElementById('withdraw-btn').addEventListener('click',function(){
-    //input button
-const withdrawInput =document.getElementById('withdraw-input');
-const withdrawAmount = parseFloat(withdrawInput.value);
-// withdraw-pre-balance
-const withdrawPreBalanceTaxt = document.getElementById('withdraw-pre-balance');
-const withdrawPreBalance=parseFloat(withdrawPreBalanceTaxt.innerText);
-const withdrawCurrentBalance = withdrawPreBalance + withdrawAmount;
-withdrawPreBalanceTaxt.innerText=withdrawCurrentBalance;
+document.getElementById('withdraw-btn').addEventListener('click',function(){;
+const withdrawAmount=getInput('withdraw-input');
+preBlance(withdrawAmount,'withdraw-pre-balance');
 //update balance
-const balanceText =document.getElementById('total-balance');
-const balance =parseFloat(balanceText.innerText);
-const totalBalance = balance - withdrawAmount;
-balanceText.innerText = totalBalance
-// input clear 
-withdrawInput.value ='';
+updateBalance(withdrawAmount ,false);
 })
